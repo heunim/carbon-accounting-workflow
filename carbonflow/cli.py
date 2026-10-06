@@ -1,5 +1,6 @@
 import argparse
 import json
+import sys
 from pathlib import Path
 from .catalog import Catalog
 from .models import Project
@@ -8,7 +9,19 @@ from .io import load_activities, export_excel
 from .calculator import electricity_scenario
 
 
+def _ensure_utf8_stdout():
+    """Windows 控制台默认 cp1252/gbk 会导致中文输出 UnicodeEncodeError。"""
+    for stream in (sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, "reconfigure", None)
+        if reconfigure is not None:
+            try:
+                reconfigure(encoding="utf-8", errors="replace")
+            except Exception:
+                pass
+
+
 def main():
+    _ensure_utf8_stdout()
     p = argparse.ArgumentParser(description="CarbonFlow 企业碳核算命令行")
     p.add_argument("--input", default="examples/demo_activities.xlsx")
     p.add_argument("--catalog", default="data/carbon_data.xlsx")
