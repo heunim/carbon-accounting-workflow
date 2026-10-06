@@ -120,6 +120,6 @@ python -m pytest -q
 
 测试使用独立写出的期望算式，覆盖缺因子、零与缺失、CO₂e重复折算、GWP版本不一致、单位含义、地区回退、互斥记录、购电情景、Excel文本注入和AI非法ID。界面测试使用Streamlit AppTest。
 
-实际验证环境和结果见`docs/VALIDATION.md`。Windows自动化测试已配置，但在首次上传并触发GitHub Actions之前，不声称远程Windows任务已通过。
+实际验证环境和结果见`docs/VALIDATION.md`。已通过GitHub Actions的Windows与Ubuntu测试。
 
 代码采用MIT许可，第三方数据与资料保留其来源要求。来源说明见`docs/DATA.md`。
