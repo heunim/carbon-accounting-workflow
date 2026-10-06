@@ -2,8 +2,6 @@
 
 把活动数据转成可复核的碳核算结果。上传Excel或CSV，系统归类范围1/2/3、匹配背景因子、换算单位并计算CO₂e。缺数据和缺因子会进入人工处理面板，结果保留来源和计算过程。
 
-**求职作品定位**：双碳分析、ESG数据管理与AI应用的工程原型。使用虚构企业数据展示核算方法和软件实现，不代表真实企业披露、第三方核查或完整温室气体清单。
-
 ![CarbonFlow核算概览](docs/images/dashboard.png)
 
 ## 先运行，再看实现
@@ -123,26 +121,5 @@ python -m pytest -q
 测试使用独立写出的期望算式，覆盖缺因子、零与缺失、CO₂e重复折算、GWP版本不一致、单位含义、地区回退、互斥记录、购电情景、Excel文本注入和AI非法ID。界面测试使用Streamlit AppTest。
 
 实际验证环境和结果见`docs/VALIDATION.md`。Windows自动化测试已配置，但在首次上传并触发GitHub Actions之前，不声称远程Windows任务已通过。
-
-## 上传GitHub
-
-建议仓库名`carbon-accounting-workflow`，描述可写“企业Scope 1/2/3碳核算工作流，支持因子追溯、人工复核与可选AI建议”。
-
-先在GitHub新建空仓库，再从项目目录执行以下命令，把最后两行中的地址替换成你自己的仓库地址：
-
-```bash
-git init
-git add .
-git commit -m "Build carbon accounting workflow MVP"
-git branch -M main
-git remote add origin YOUR_REPOSITORY_URL
-git push -u origin main
-```
-
-上传前确认只包含公开背景数据和虚构示例。`.gitignore`已排除.env、虚拟环境、日志、输出文件及真实上传目录。不要把整个压缩包作为唯一源码文件上传，应先解压并上传项目内容。
-
-## 面试演示
-
-使用`docs/PORTFOLIO.md`中的三分钟讲稿。重点展示一条可追溯结果、一条待处理记录如何修正，以及为什么AI不能直接决定因子或算数。可公开展示当前软件原型，不能将虚构数据包装成服务真实企业的成果。
 
 代码采用MIT许可，第三方数据与资料保留其来源要求。来源说明见`docs/DATA.md`。
